@@ -131,6 +131,7 @@ def decrypter(dec_str,dec_key):
             elif(tpl_RULE[1][1] == 1):
                 new_str+=(chr(ord(list_opertional[x]) + tpl_RULE[0][1]))
             x+=1
+        new_str+=' '
     print(new_str)
 
 
