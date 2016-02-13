@@ -129,7 +129,7 @@ def decrypter(dec_str,dec_key):
             if(tpl_RULE[1][1] == 0):
                 new_str+=(chr(ord(list_opertional[x][1]) - tpl_RULE[0][1]))
             elif(tpl_RULE[1][1] == 1):
-                new_str+=(chr(ord(list_opertional[x]) + tpl_RULE[0][1]))
+                new_str+=(chr(ord(list_opertional[x][1]) + tpl_RULE[0][1]))
             x+=1
         new_str+=' '
     print(new_str)
@@ -148,9 +148,6 @@ def menu():
     print('''enter option number from the following list to tell us about your choice:
            1> ENCRYPTER
            2> DECRYPTER
-
-
-
     ''')
     choice_1= int(input())
     if (choice_1==1):
