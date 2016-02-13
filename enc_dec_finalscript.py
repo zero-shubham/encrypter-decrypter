@@ -30,7 +30,7 @@ def main():
         write_file('','data.txt')
         print('Done.')
     else:
-        print("Please check your input. All options taken are case sensitive, use uppercase alphabets to specify your options.")
+        print("Please check your input.")
 
 
 
