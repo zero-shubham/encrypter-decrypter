@@ -26,6 +26,9 @@ def main():
         str_send= input()
         encrypt_key = key_extract(int(input()))
         print(decrypter(str_send,encrypt_key))
+    elif(oper[0]== 3):
+        write_file(' ','data.txt')
+        print('Done.')
     else:
         print("Please check your input. All options taken are case sensitive, use uppercase alphabets to specify your options.")
 
@@ -156,6 +159,8 @@ def menu():
     print('''enter option number from the following list:
            1> ENCRYPTER
            2> DECRYPTER
+           3> Clear the default text file.
+
     ''')
     choice_1= int(input())
     if (choice_1==1):
@@ -164,6 +169,9 @@ def menu():
     elif(choice_1==2):
         print("should the text read from file?||ANSWER:Y/N||case sensitive")
         choice_2=str(input())
+    elif(choice_1==3):
+        choice_2=''
+
 
     return (choice_1,choice_2)
 
