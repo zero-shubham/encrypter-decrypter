@@ -27,7 +27,7 @@ def main():
         encrypt_key = key_extract(int(input()))
         print(decrypter(str_send,encrypt_key))
     elif(oper[0]== 3):
-        write_file(' ','data.txt')
+        write_file('','data.txt')
         print('Done.')
     else:
         print("Please check your input. All options taken are case sensitive, use uppercase alphabets to specify your options.")
@@ -38,10 +38,14 @@ def main():
 
 
 def write_file(to_wrt,opt):
-    f = open(str(opt), 'w', encoding='utf-8')
-    for j in to_wrt:
-        f.write(j)
-    f.write('\n')
+    if (to_wrt!=''):
+        f = open(str(opt), 'w', encoding='utf-8')
+        for j in to_wrt:
+            f.write(j)
+        f.write('\n')
+    else:
+        f = open(str(opt),'w')
+        f.truncate()
     f.close
 
 
@@ -166,9 +170,13 @@ def menu():
     if (choice_1==1):
         print("would you like to write the encrypted text to a text file?||ANSWER:Y/N||case sensitive")
         choice_2=str(input())
+        if (choice_2.islower()):
+            choice_2=choice_2.upper()
     elif(choice_1==2):
         print("should the text read from file?||ANSWER:Y/N||case sensitive")
         choice_2=str(input())
+        if (choice_2.islower()):
+            choice_2=choice_2.upper()
     elif(choice_1==3):
         choice_2=''
 
