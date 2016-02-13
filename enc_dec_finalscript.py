@@ -7,16 +7,27 @@ def main():
         print("enter your string:")
         str_send= input()
         b=(encryter(str_send,encrypt_key))
-        print(ord(b[0]))
-        print(b)
         write_file(b,'data.txt')
+    elif(oper[0]== 1 and oper[1]== 'N'):
+        print("enter key:")
+        encrypt_key = key_extract(int(input()))
+        print("enter your string:")
+        str_send= input()
+        b=(encryter(str_send,encrypt_key))
+        print(b)
     elif(oper[0]== 2 and oper[1]== 'Y'):
         print("enter key:")
         encrypt_key = key_extract(int(input()))
-        decrypter('pass',encrypt_key)
-
-
-
+        print(decrypter('PaSs',encrypt_key))
+    elif(oper[0]== 2 and oper[1]== 'N'):
+        print("enter key:")
+        encrypt_key = key_extract(int(input()))
+        print("enter your string:")
+        str_send= input()
+        encrypt_key = key_extract(int(input()))
+        print(decrypter(str_send,encrypt_key))
+    else:
+        print("Please check your input. All options taken are case sensitive, use uppercase alphabets to specify your options.")
 
 
 
@@ -74,7 +85,6 @@ def encryter(wrkng_str, enc_key):
     tpl_RULEset= enrule(enc_key)
     list_contn_str = wrkng_str.split()
     new_str= str()
-    print(tpl_RULEset)
     for k in list_contn_str:
         len_str = len(k)
         x = 0
@@ -114,7 +124,7 @@ def decrypter(dec_str,dec_key):
 
     tpl_RULE=enrule(dec_key)
     new_str= str()
-    if(dec_str=='pass'):
+    if(dec_str=='PaSs'):
         temp=read_file()
     temp_2=re.split(' ',temp)
     temp_2=temp_2[:-1]
@@ -122,7 +132,6 @@ def decrypter(dec_str,dec_key):
         x= str(k[2])
         list_opertional=(re.split(x,k))
         list_opertional=list_opertional[:-1]
-        print(list_opertional)
         len_str=len(list_opertional)
         x=0
         while(x<len_str):
@@ -132,8 +141,7 @@ def decrypter(dec_str,dec_key):
                 new_str+=(chr(ord(list_opertional[x][1]) + tpl_RULE[0][1]))
             x+=1
         new_str+=' '
-    print(new_str)
-
+    return new_str
 
 
 
@@ -145,7 +153,7 @@ def decrypter(dec_str,dec_key):
 
 def menu():
     print("THIS IS ENCRYPTER/DECRYPTER SCRIPT. WELCOME")
-    print('''enter option number from the following list to tell us about your choice:
+    print('''enter option number from the following list:
            1> ENCRYPTER
            2> DECRYPTER
     ''')
@@ -154,7 +162,7 @@ def menu():
         print("would you like to write the encrypted text to a text file?||ANSWER:Y/N||case sensitive")
         choice_2=str(input())
     elif(choice_1==2):
-        print("should the string read from file?||ANSWER:Y/N||case sensitive")
+        print("should the text read from file?||ANSWER:Y/N||case sensitive")
         choice_2=str(input())
 
     return (choice_1,choice_2)
